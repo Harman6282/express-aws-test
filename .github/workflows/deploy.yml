@@ -36,8 +36,8 @@ jobs:
       - name: Deploy to EC2 via SSH
         run: |
           ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-            docker pull harmanxze/test-deploy:latest
-            docker stop test-deploy || true
-            docker rm test-deploy || true
-            docker run -d -p 3000:3000 --name test-deploy harmanxze/test-deploy:latest
+            sudo docker pull harmanxze/test-deploy:latest
+            sudo docker stop test-deploy || true
+            sudo docker rm test-deploy || true
+            sudo docker run -d -p 3000:3000 --name test-deploy harmanxze/test-deploy:latest
           EOF
